@@ -1,3 +1,6 @@
 #index:
-#    path: /
+#    path:   /public
 #    controller: App\Controller\DefaultController::index
+db:
+  path: /dbTest
+  controller: App\Controller\db::connect
