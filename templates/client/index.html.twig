@@ -3,18 +3,24 @@
 {% block title %}Hello ClientController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+                <button class="btn btn-sm btn-outline-secondary">Share</button>
+                <button class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar"></span>
+                This week
+            </button>
+        </div>
+    </div>
+    <h1>Hello {{ controller_name }}!</h1>
 
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ '/home/hagneva1/dev/Lpro/projet_location_bus/src/Controller/ClientController.php'|file_link(0) }}">src/Controller/ClientController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/home/hagneva1/dev/Lpro/projet_location_bus/templates/client/index.html.twig'|file_link(0) }}">templates/client/index.html.twig</a></code></li>
     </ul>
-</div>
 {% endblock %}
