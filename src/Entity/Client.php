@@ -20,11 +20,6 @@ class Client
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $idclient;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
@@ -62,18 +57,6 @@ class Client
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdclient(): ?int
-    {
-        return $this->idclient;
-    }
-
-    public function setIdclient(int $idclient): self
-    {
-        $this->idclient = $idclient;
-
-        return $this;
     }
 
     public function getNom(): ?string
