@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Fiche véhicule:
+    {{ vehicule["marque"] }}
+    {{ vehicule["modele"] }}
+    {{ vehicule["norme"] }}
+{% endblock %}
+
+{% block body %}
+    <h1>Caractérisitque du véhicule: </h1>
+    <ul>
+        <li>Marque: {{ vehicule["marque"] }}</li>
+        <li>Modèle: {{vehicule["modele"] }}</li>
+        <li>Norme anti-pollution: {{ vehicule["norme"] }}</li>
+        <li>Type d'énergie: {{ vehicule["energie"] }}</li>
+    </ul>
+{% endblock %}
+
+{% block dessous %}
+    <article>
+    <p>
+        Ici la description du véhicule
+    </p>
+    </article>
+{% endblock %}

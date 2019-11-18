@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}Choisir un véhicule{% endblock %}
+
+{% block body %}
+    <p>Liste des véhicules ici</p>
+    <p>{{ controller_name }}</p>
+
+    <ul>
+        {% for num, pdt in listePdts %}
+            <li>
+                <a href="fiche?car={{ num }}">
+                    <ul>
+                        <li>{{ pdt["marque"] }} {{ pdt["modele"] }} {{ pdt["norme"] }}</li>
+                    </ul>
+                </a>
+            </li>
+
+            <p>-------------</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
