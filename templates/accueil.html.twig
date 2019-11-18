@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+{% block title %}Accueil{% endblock %}
+
+{%  block stylesheets %}
+    <link rel="stylesheet" href="css/accueil.css">
+{%  endblock %}
+
+{% block signLink %}
+    <a class="nav-link" href="/">Back to website</a>
+{%  endblock %}
+
+{% block body %}
+    <main role="main">
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+
+                    <!-- 1ère image -->
+                    <img class="first-slide" src="./images/buses.jpg" alt="First slide">
+                    <div class="container">
+                        <div class="carousel-caption text-left">
+                            <h1>Louez un vehicule pour toutes les occasions</h1>
+                            <p>Découvrez notre gamme complète de véhicule et trouvez celui réellement adapté à vos besoins</p>
+                           <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- deuxième image -->
+                <div class="carousel-item">
+                    <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Another example headline.</h1>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3ème image -->
+                <div class="carousel-item">
+                    <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+                    <div class="container">
+                        <div class="carousel-caption text-right">
+                            <h1>One more for good measure.</h1>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+
+        <!-- en dessous du caroussel -->
+        <div class="container marketing">
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="./images/buses.jpg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Une gamme complète de véhicule</h2>
+                    <p>De 9 à 70 places, trouvez le véhicule qui vous conviens, avec un choix d'équipement important</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">Voir nos véhicules &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Avec ou sans chauffeur</h2>
+                    <p>Nous vous proposons une offre de location avec chauffeur d'une durée pouvant aller jusqu'à une semaine</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">Voir les offres &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="./images/critair2.png" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Respect de l'environnement</h2>
+                    <p>Tout nos véhicule respectes les normes d'émissions de polluants, et nous apportons un grand soins aux mainteance des systèmes de dépollution</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">Voir nos véhicules garantis propres &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+
+            <!-- START THE FEATURETTES -->
+
+            <!--<hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <!-- /END THE FEATURETTES -->
+
+        </div><!-- /.container -->
+
+        <!-- Bootstrap core JavaScript
+   ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script src="./js/vendor/popper.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+    </main>
+{%  endblock %}
