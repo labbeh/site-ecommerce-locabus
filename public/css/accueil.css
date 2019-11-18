@@ -77,12 +77,11 @@ body {
         margin-bottom: 1.25rem;
         font-size: 1.25rem;
         line-height: 1.4;
-        color: yellow;
+
+        background-color: rgba(0, 36, 255, 0.5);
     }
 
     .carousel-caption h1 {
-
-        color: #C82829;
 
     }
 
