@@ -9,7 +9,7 @@
     <a class="nav-link" href="/">Back to website</a>
 {%  endblock %}
 
-{% block body %}
+{% block dessous %}
     <main role="main">
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -22,7 +22,7 @@
                 <div class="carousel-item active">
 
                     <!-- 1ère image -->
-                    <img class="first-slide" src="./images/flotte.jpg" alt="First slide">
+                    <img class="first-slide" src="./images/intouro_paris.jpg" alt="First slide">
                     <div class="container">
                         <div class="carousel-caption text-left">
                             <h1>Louez un vehicule pour toutes les occasions</h1>
@@ -34,24 +34,24 @@
 
                 <!-- deuxième image -->
                 <div class="carousel-item">
-                    <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+                    <img class="second-slide" src="./images/poste_conduite.jpg" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>Another example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                            <h1>Un chauffeur professionnel pour vous accompagnez</h1>
+                            <p>Pour toute location de véhicule de plus de 9 places assises, une option chauffeur est disponible avec un tarif à l'heure</p>
+                            <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>-->
                         </div>
                     </div>
                 </div>
 
                 <!-- 3ème image -->
                 <div class="carousel-item">
-                    <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+                    <img class="third-slide" src="./images/citaro_hybride.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption text-right">
-                            <h1>One more for good measure.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                            <h1>Respect de l'environnement</h1>
+                            <p>Nous nous engageons à proposer des véihcules propres, et nous disposons d'une grande gamme de véhicule électrique, GNV et hybride !</p>
+                            <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>-->
                         </div>
                     </div>
                 </div>
@@ -73,78 +73,39 @@
 
             <div class="row">
                 <div class="col-lg-4">
-                    <img class="rounded-circle" src="./images/buses.jpg" alt="Generic placeholder image" width="140" height="140">
+                    <img class="rounded-circle" src="./images/buses.jpg" alt="Photos d'un parc de cars" width="140" height="140">
                     <h2>Une gamme complète de véhicule</h2>
                     <p>De 9 à 70 places, trouvez le véhicule qui vous conviens, avec un choix d'équipement important</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">Voir nos véhicules &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="produits" role="button">Voir nos véhicules &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
 
                 <div class="col-lg-4">
-                    <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                    <img class="rounded-circle" src="./images/poste_conduite.jpg" alt="Generic placeholder image" width="140" height="140">
                     <h2>Avec ou sans chauffeur</h2>
                     <p>Nous vous proposons une offre de location avec chauffeur d'une durée pouvant aller jusqu'à une semaine</p>
                     <p><a class="btn btn-secondary" href="#" role="button">Voir les offres &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
 
                 <div class="col-lg-4">
-                    <img class="rounded-circle" src="./images/critair2.png" alt="Generic placeholder image" width="140" height="140">
+                    <img class="rounded-circle" src="./images/critair2.png" alt="logo vignette crit'air 2" width="140" height="140">
                     <h2>Respect de l'environnement</h2>
                     <p>Tout nos véhicule respectes les normes d'émissions de polluants, et nous apportons un grand soins aux mainteance des systèmes de dépollution</p>
                     <p><a class="btn btn-secondary" href="#" role="button">Voir nos véhicules garantis propres &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
 
-
-            <!-- START THE FEATURETTES -->
-
-            <!--<hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5 order-md-1">
-                    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <!-- /END THE FEATURETTES -->
-
         </div><!-- /.container -->
 
         <!-- Bootstrap core JavaScript
    ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-        <script src="./js/vendor/popper.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
+
     </main>
 {%  endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="./js/vendor/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+{% endblock %}
