@@ -6,7 +6,8 @@
     {{ vehicule["norme"] }}
 {% endblock %}
 
-{% block body %}
+{% block dessous %}
+    <section>
     <h1>Caractérisitque du véhicule: </h1>
     <ul>
         <li>Marque: {{ vehicule["marque"] }}</li>
@@ -14,9 +15,8 @@
         <li>Norme anti-pollution: {{ vehicule["norme"] }}</li>
         <li>Type d'énergie: {{ vehicule["energie"] }}</li>
     </ul>
-{% endblock %}
+    </section>
 
-{% block dessous %}
     <article>
     <p>
         Ici la description du véhicule
