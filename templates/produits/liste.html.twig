@@ -2,20 +2,42 @@
 {% block title %}Choisir un véhicule{% endblock %}
 
 {% block dessous %}
-    <p>Liste des véhicules ici</p>
-    <p>{{ controller_name }}</p>
 
-    <ul>
-        {% for num, pdt in listePdts %}
-            <li>
-                <a href="fiche?car={{ num }}">
-                    <ul>
-                        <li>{{ pdt["marque"] }} {{ pdt["modele"] }} {{ pdt["norme"] }}</li>
-                    </ul>
-                </a>
-            </li>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
 
-            <p>-------------</p>
-        {% endfor %}
-    </ul>
+                <!-- Liste des éléments à louer-->
+                {% for num, pdt in listePdts %}
+                    <ul class="list-group shadow">
+
+                    <!-- list group item-->
+                    <li class="list-group-item">
+                        <a href="fiche?car={{ num }}">
+                        <!-- Custom content-->
+                        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                            <div class="media-body order-2 order-lg-1">
+
+                                <h5 class="mt-0 font-weight-bold mb-2">
+                                    {{ pdt["marque"] }} {{ pdt["modele"] }} {{ pdt["norme"] }}
+                                </h5>
+
+                                <p class="font-italic text-muted mb-0 small">
+                                    Description succinte du véhicule
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between mt-1">
+                                    <h6 class="font-weight-bold my-2">PRIX/DEMI-JOURNEE</h6>
+                                </div>
+                            </div><img src="./images/produits/{{ pdt["marque"] }}_{{ pdt["modele"] }}.jpg" alt="Photo du véhicule" width="200" class="ml-lg-5 order-1 order-lg-2">
+                        </div>
+                        <!-- End -->
+                        </a>
+                    </li>
+                </ul>
+                {% endfor %}
+                <!-- End -->
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
