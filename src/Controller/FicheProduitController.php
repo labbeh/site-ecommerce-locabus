@@ -21,7 +21,7 @@ class FicheProduitController extends AbstractController
             'energie' => 'Diesel');
 
         $car2 = array(
-            'marque' => 'Irirbus',
+            'marque' => 'Irisbus',
             'modele' => 'Crossway',
             'norme' => '€4',
             'energie' => 'Diesel');
