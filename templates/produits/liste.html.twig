@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block title %}Choisir un véhicule{% endblock %}
 
+{% block stylesheets %}
+    <!--<link rel='stylesheet prefetch' href='https://entrusters.com/templates/yoo_moustache/css/theme.css'>-->
+    <!--<link rel='stylesheet prefetch' href='https://entrusters.com/modules/mod_entrusters_shopbyurl/css/urldata.previewer.min.css'>
+    <link rel='stylesheet prefetch' href='https://entrusters.com/shop/products'>-->
+{% endblock %}
+
 {% block dessous %}
 
     <div class="container py-5">
@@ -37,7 +43,70 @@
                 {% endfor %}
                 <!-- End -->
             </div>
+            <div class="cd-filter-block">
+                <h4>Categorie</h4>
+                <ul class="cd-filter-content cd-filters list">
+                    <li>
+                        <input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
+                        <label class="checkbox-label" for="checkbox1">Urbain</label>
+                    </li>
+
+                    <li>
+                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
+                        <label class="checkbox-label" for="checkbox2">Interurbain</label>
+                    </li>
+
+                    <li>
+                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
+                        <label class="checkbox-label" for="checkbox2">Tourisme</label>
+                    </li>
+
+                </ul> <!-- cd-filter-content -->
+
+                <h4>Energie</h4>
+                <ul class="cd-filter-content cd-filters list">
+                    <li>
+                        <input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
+                        <label class="checkbox-label" for="checkbox1">Diesel</label>
+                    </li>
+
+                    <li>
+                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
+                        <label class="checkbox-label" for="checkbox2">GNV</label>
+                    </li>
+
+                    <li>
+                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
+                        <label class="checkbox-label" for="checkbox2">Hybride</label>
+                    </li>
+
+                    <li>
+                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
+                        <label class="checkbox-label" for="checkbox2">Electrique</label>
+                    </li>
+
+                </ul> <!-- cd-filter-content -->
+
+                <h4>Nombre de places</h4>
+                <ul class="cd-filter-content cd-filters list">
+                    <li>
+                        <input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
+                        <label class="radio-label" for="radio1">9 Places max</label>
+                    </li>
+
+                    <li>
+                        <input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
+                        <label class="radio-label" for="radio1">de 10 à 20 places</label>
+                    </li>
+
+                    <li>
+                        <input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
+                        <label class="radio-label" for="radio1">Plus de 20 places</label>
+                    </li>
+
+                </ul> <!-- cd-filter-content -->
+
+            </div> <!-- cd-filter-block -->
         </div>
     </div>
-
 {% endblock %}
