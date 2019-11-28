@@ -17,12 +17,8 @@ class Vehicule
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $marque;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Modele", inversedBy="vehicules")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $modele;
 
@@ -34,7 +30,7 @@ class Vehicule
     /**
      * @ORM\Column(type="integer")
      */
-    private $nbplaces;
+    private $nbPlaces;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -61,24 +57,12 @@ class Vehicule
         return $this->id;
     }
 
-    public function getMarque(): ?string
-    {
-        return $this->marque;
-    }
-
-    public function setMarque(string $marque): self
-    {
-        $this->marque = $marque;
-
-        return $this;
-    }
-
-    public function getModele(): ?string
+    public function getModele(): ?Modele
     {
         return $this->modele;
     }
 
-    public function setModele(string $modele): self
+    public function setModele(?Modele $modele): self
     {
         $this->modele = $modele;
 
@@ -97,14 +81,14 @@ class Vehicule
         return $this;
     }
 
-    public function getNbplaces(): ?int
+    public function getNbPlaces(): ?int
     {
-        return $this->nbplaces;
+        return $this->nbPlaces;
     }
 
-    public function setNbplaces(int $nbplaces): self
+    public function setNbPlaces(int $nbPlaces): self
     {
-        $this->nbplaces = $nbplaces;
+        $this->nbPlaces = $nbPlaces;
 
         return $this;
     }
