@@ -27,7 +27,7 @@ class Modele
      * @ORM\ManyToOne(targetEntity="App\Entity\Marque", inversedBy="modeles")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $idMarque;
+    private $marque;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Vehicule", mappedBy="modele")
@@ -56,14 +56,14 @@ class Modele
         return $this;
     }
 
-    public function getIdMarque(): ?Marque
+    public function getMarque(): ?Marque
     {
-        return $this->idMarque;
+        return $this->marque;
     }
 
-    public function setIdMarque(?Marque $idMarque): self
+    public function setMarque(?Marque $marque): self
     {
-        $this->idMarque = $idMarque;
+        $this->marque = $marque;
 
         return $this;
     }

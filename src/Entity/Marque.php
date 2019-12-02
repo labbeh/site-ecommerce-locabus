@@ -62,7 +62,7 @@ class Marque
     {
         if (!$this->modeles->contains($modele)) {
             $this->modeles[] = $modele;
-            $modele->setIdMarque($this);
+            $modele->setMarque($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Marque
         if ($this->modeles->contains($modele)) {
             $this->modeles->removeElement($modele);
             // set the owning side to null (unless already changed)
-            if ($modele->getIdMarque() === $this) {
-                $modele->setIdMarque(null);
+            if ($modele->getMarque() === $this) {
+                $modele->setMarque(null);
             }
         }
 

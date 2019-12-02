@@ -8,83 +8,13 @@
 
 {% block body %}
 
-<div class="col-md-8 order-md-1 pad-top">
-    <h4 class="mb-3">Formulaire pour l'ajout d'un véhicule</h4>
-    <form class="needs-validation" novalidate>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="marque">Marque</label>
-                <select class="custom-select d-block w-100" id="marque" required>
-                    <option value="">Choose...</option>
-                    <option>United States</option>
-                </select>
-                <div class="invalid-feedback">
-                    La marque est obligatoire pour la création d'un véhicule.
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="modele">Modèle</label>
-                <select class="custom-select d-block w-100" id="modele" required>
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                </select>
-                <div class="invalid-feedback">
-                    Le modele est obligatoire pour la création d'un véhicule.
-                </div>
-            </div>
-        </div>
+    {# ... #}
+    {# this tag only applies to the forms defined in this template #}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="ptac">PTAC</label>
-                <input type="text" class="form-control" id="ptac" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                    Le poids total autorisé en charge est obligatoire pour la création d'un véhicule.
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="nbPlaces">Nombres de places</label>
-                <select class="custom-select d-block w-100" id="nbPlaces" required>
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                </select>
-                <div class="invalid-feedback">
-                    Le nombre de places est obligatoire pour la création d'un véhicule.
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-5 mb-3">
-                <label for="energy">Energie</label>
-                <input type="text" class="form-control" id="energy" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                    L'énergie'est obligatoire pour la création d'un véhicule.
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="annee">Année de mise en circulation</label>
-                <select class="custom-select d-block w-100" id="annee" required>
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                </select>
-                <div class="invalid-feedback">
-                    L'année de mise en circulation est obligatoire pour la création d'un véhicule.
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label for="norme">Norme </label>
-                <select class="custom-select d-block w-100" id="norme" required>
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                </select>
-                <div class="invalid-feedback">
-                    La norme est obligatoire pour la création d'un véhicule.
-                </div>
-            </div>
-        </div>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Valider le véhicule</button>
-    </form>
-</div>
+    {% block bodyy %}
+        <h1>User Sign Up:</h1>
+        {{ form(form, { 'attr': {'class': 'form-inline'} }) }}
+    {% endblock %}
 
 {% endblock %}
