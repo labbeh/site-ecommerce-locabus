@@ -18,10 +18,27 @@ class VehiculeController extends AbstractController
      */
     public function new(Request $request)
     {
-        $task = new Vehicule();
+        $vehicule = new Vehicule();
         // ...
 
-        $form = $this->createForm(VehiculeFormType::class, $task);
+        $form = $this->createForm(VehiculeFormType::class, $vehicule);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            //$vehicule = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($vehicule);
+            $entityManager->flush();
+
+            return $this->render('accueil.html.twig', [
+                'controller_name' => 'AccueilController',
+            ]);
+        }
 
         return $this->render('vehicule/index.html.twig', [
             'form' => $form->createView(),

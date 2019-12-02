@@ -10,11 +10,13 @@
 
     {# ... #}
     {# this tag only applies to the forms defined in this template #}
-    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
 
     {% block bodyy %}
-        <h1>User Sign Up:</h1>
-        {{ form(form, { 'attr': {'class': 'form-inline'} }) }}
+        <div class="col-md-8 order-md-1 pad-top">
+            <h1>User Sign Up:</h1>
+            {{ form(form) }}
+        </div>
     {% endblock %}
 
 {% endblock %}
