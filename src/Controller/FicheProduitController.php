@@ -14,7 +14,7 @@ class FicheProduitController extends AbstractController
      */
     public function index()
     {
-        $car1 = array(
+        /*$car1 = array(
             'marque' =>'Mercedes',
             'modele' => 'Intouro',
             'norme' => '€5',
@@ -44,10 +44,22 @@ class FicheProduitController extends AbstractController
             'car2' => $car2,
             'car3' => $car3,
             'car4' => $car4
+        );*/
+        //"vehicule" => $listePdts[$_GET["car"]
+
+        $vehicule = $this -> getDoctrine() -> getRepository('App:Vehicule') -> findOneByid($_GET["car"]);
+
+        $dataVehicule = array(
+            'marque' => $vehicule->getModele()->getMarque()->getName(),
+            'modele' => $vehicule->getModele(),
+            'norme' => $vehicule->getNorme(),
+            'energie' => $vehicule->getEnergie(),
+            'description' => $vehicule->getDescription()
         );
+
         // devra être récupérer via le liens
         return $this->render('produits/fiche.html.twig', ['controller_name' => 'FicheProduitController',
-            "GET" => $_GET, "vehicule" => $listePdts[$_GET["car"]]
+            "GET" => $_GET, "vehicule" => $dataVehicule
         ]);
     }
 }
