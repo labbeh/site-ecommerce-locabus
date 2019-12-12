@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{%  block stylesheets %}
+    <link rel="stylesheet" href="css/signin/signin.css">
+{%  endblock %}
+
+{% block signLink %}
+    <a class="nav-link" href="/">Back to website</a>
+{%  endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+    {{ form_start(registrationForm,
+        { 'attr':
+            {'class': 'form-signin'}
+        })
+    }}
+        {{ form_label(registrationForm.email,
+            null,
+            { 'label_attr':
+                {'class': 'sr-only'}
+            })
+        }}
+        {{ form_widget(registrationForm.email,
+            { 'attr':
+                {'class': 'form-control', 'placeholder': 'Email address'}
+            })
+        }}
+        {{ form_label(registrationForm.plainPassword,
+            null,
+            { 'label_attr':
+                {'class': 'sr-only'}
+            })
+        }}
+        {{ form_widget(registrationForm.plainPassword,
+            { 'attr':
+                {'class': 'form-control', 'placeholder': 'Password'}
+            })
+        }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Register
+    </button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
