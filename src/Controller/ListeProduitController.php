@@ -58,7 +58,7 @@ class ListeProduitController extends AbstractController
                 'energie' => $car->getEnergie(),
                 'description' => $car->getDescription()
             );
-            $listePdts['car'.$car->getId()] = $insert;
+            $listePdts[$car->getId()] = $insert;
         }
 
         return $this->render('produits/liste.html.twig', ['controller_name' => 'ListeProduitController',
