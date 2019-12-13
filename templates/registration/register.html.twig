@@ -39,6 +39,39 @@
                 {'class': 'form-control', 'placeholder': 'Password'}
             })
         }}
+        {{ form_label(registrationForm.firstName,
+            null,
+            { 'label_attr':
+                {'class': 'sr-only'}
+            })
+        }}
+        {{ form_widget(registrationForm.firstName,
+            { 'attr':
+                {'class': 'form-control', 'placeholder': 'Prénom'}
+            })
+        }}
+        {{ form_label(registrationForm.lastName,
+            null,
+            { 'label_attr':
+                {'class': 'sr-only'}
+            })
+        }}
+        {{ form_widget(registrationForm.lastName,
+            { 'attr':
+                {'class': 'form-control', 'placeholder': 'Nom'}
+            })
+        }}
+        {{ form_label(registrationForm.phone,
+            null,
+            { 'label_attr':
+                {'class': 'sr-only'}
+            })
+        }}
+        {{ form_widget(registrationForm.phone,
+            { 'attr':
+                {'class': 'form-control', 'placeholder': 'Numéro de téléphone'}
+            })
+        }}
         {{ form_row(registrationForm.agreeTerms) }}
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">
