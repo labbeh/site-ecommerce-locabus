@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block title %}Page administration{% endblock %}
+
+{%  block stylesheets %}
+
+{%  endblock %}
+
+{% block signLink %}
+    <a class="nav-link" href="/">Back to website</a>
+{%  endblock %}
+
+{% block dessous %}
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <aside class="col-12 col-md-2 p-0 bg-dark">
+                <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start">
+                    <div class="collapse navbar-collapse">
+                        <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                            <!-- éléments du menu -->
+                            <li class="nav-item"><a class="nav-link pl-0" href="adminpg?table=utilisateurs">Gestion des utilisateurs</a></li>
+                            <li class="nav-item"><a class="nav-link pl-0" href="adminpg?table=vehicules">Gestion des véhicules</a></li>
+                            <li class="nav-item"><a class="nav-link pl-0" href="adminpg?table=chauffeurs">Gestion des chauffeurs</a></li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <main class="col">
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        {% for nomCol in entete %}
+                            <th scope="col"> {{ nomCol }} </th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for data in datas %}
+                        <tr>
+                        {% for key in data|keys %}
+                            <td>{{ data[key] }}</td>
+                        {% endfor %}
+                        <td> <button> - </button> </td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+{%  endblock %}
+
+{% block javascripts %}
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>-->
+{% endblock %}
