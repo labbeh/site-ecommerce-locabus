@@ -1,6 +1,6 @@
 #index:
 #    path:   /public
 #    controller: App\Controller\DefaultController::index
-db:
-  path: /dbTest
-  controller: App\Controller\db::connect
+app_homepage:
+  path: /accueil
+  controller: App\Controller\AccueilController.php

@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this displayName")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -62,12 +62,12 @@ class User implements UserInterface
 
     public function getDisplayName(): ?string
     {
-        return $this->displayName;
+        return $this->firstName . " " . $this.$this->lastName;
     }
 
-    public function setDisplayName(string $displayName): self
+    public function setDisplayName(): self
     {
-        $this->displayName = $displayName;
+        $this->displayName = $this->firstName . " " . $this->lastName;
 
         return $this;
     }
