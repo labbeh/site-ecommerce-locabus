@@ -7,6 +7,13 @@
 
 {% block dessous %}
     <main role="main">
+        <!-- Bandeau d'accès aux fonctions admin -->
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="alert alert-warning" role="alert">
+                <p>Vous êtes connecté en tant qu'administrateur</p>
+                <a href="adminpg">Cliquez ici pour accéder aux fonctions d'administration</a>
+            </div>
+        {% endif %}
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -91,7 +98,6 @@
             </div><!-- /.row -->
 
         </div><!-- /.container -->
-
         <!-- Bootstrap core JavaScript
    ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
