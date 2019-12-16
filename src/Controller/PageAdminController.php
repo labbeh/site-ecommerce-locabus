@@ -19,54 +19,48 @@ class PageAdminController extends AbstractController
                 'controller_name' => 'PageAdmin'
             ]);
 
-        // données en dure temporaire avant connexion à la base
-        $enTete = array();
-        if(sizeof($_GET) == 0) $enTete = array();
-        else if ($_GET["table"] == "utilisateurs") $enTete = array("Nom", "Username", "Supprimer");
-        else if ($_GET["table"] == "vehicules"   ) $enTete = array("Id", "Marque", "Modele", "Energie");
-        else if ($_GET["table"] == "chauffeurs"  ) $enTete = array("Id", "Nom", "Prenom", "Permis");
+        $datas = array(); // données en sortie vers la template
 
-        $usr1 = array(
-            "Nom" => "Mdaghri",
-            "Username" => "hjr",
-        );
+        if(sizeof($_GET) == 0) {
+            $enTete = array();
+            $datas  = array();
+        }
 
-        $usr2 = array(
-            "Nom" => "delanus",
-            "Username" => "jean-gary",
-        );
+        //if(sizeof($_GET) == 0) $datas = array();
+        else if ($_GET["table"] == "utilisateurs"){
+            $enTete = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\User')->getColumnNames();
+            $all = $this->getDoctrine()->getRepository('App:User')->findAll();
 
-        $vh1 = array("Id" => "349",
-            "Marque" => "Mercedes",
-            "Modele" => "Intouro",
-            "Energie" => "Diesel");
+            //$user = array();
+            $i = 0;
 
-        $vh2 = array("Id" => "349",
-            "Marque" => "Mercedes",
-            "Modele" => "Intouro",
-            "Energie" => "Diesel");
+            $values = array();
+            /*foreach($enTete as $col){
+                $getter = 'get'.ucfirst($col);
+                $values[$col] = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\User')->$getter();
+            }*/
 
-        $vh3 = array("Id" => "349",
-            "Marque" => "Mercedes",
-            "Modele" => "Intouro",
-            "Energie" => "Diesel");
+            foreach ($all as $user){
+                $toarray = array(
+                  "id" => $user->getId(),
+                  "name" => $user->getUsername()
+                );
+                $datas[$i++] = $toarray;
+            }
+//  	id 	display_name 	roles 	password 	email 	last_name 	first_name 	phone
 
-        $vh4 = array("Id" => "350",
-            "Marque" => "Mercedes",
-            "Modele" => "Intouro",
-            "Energie" => "Diesel");
+        }
 
-        $ch1 = array("Id" => "001",
-            "Nom" => "Bus",
-            "Prenom" => "Iris",
-            "Permis" => "D");
+        else if ($_GET["table"] == "vehicules"   ) {
+            $enTete = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\Vehicule')->getColumnNames();
+            $all = $this->getDoctrine()->getRepository('App:Vehicule')->findAll();
+        }
 
-        $datas = array();
-
-        if(sizeof($_GET) == 0) $datas = array();
-        else if      ($_GET["table"] == "utilisateurs") $datas = array($usr1, $usr2);
-        else if ($_GET["table"] == "vehicules"  ) $datas = array($vh1, $vh2, $vh3, $vh4);
-        else if ($_GET["table"] == "chauffeurs" ) $datas = array($ch1);
+        else if ($_GET["table"] == "chauffeurs"  ){
+            $enTete = array("nom", "permis");
+            $all  = array();
+        }
+        //$datas = array();
 
 
         return $this->render('admin.html.twig', [
