@@ -47,7 +47,7 @@ class ListeProduitController extends AbstractController
             'car4' => $car4*/
         );
 
-        $cars = $this->getDoctrine()->getRepository('App:Vehicule')->findAll();
+        $cars = $this->getDoctrine()->getRepository('App:Vehicule')->findAllUnbook(date("Y-m-d"));
         //$cpt = 1;
 
         foreach ($cars as $car) {
