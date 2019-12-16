@@ -14,12 +14,17 @@ class PageAdminController extends AbstractController
      */
     public function index()
     {
+        if(!$this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            return $this->render('erreurdroits.html.twig', [
+                'controller_name' => 'PageAdmin'
+            ]);
+
         // données en dure temporaire avant connexion à la base
         $enTete = array();
         if(sizeof($_GET) == 0) $enTete = array();
-        else if      ($_GET["table"] == "utilisateurs") $enTete = array("Nom", "Username", "Supprimer");
-        else if ($_GET["table"] == "vehicules"  ) $enTete = array("Id", "Marque", "Modele", "Energie");
-        else if ($_GET["table"] == "chauffeurs" ) $enTete = array("Id", "Nom", "Prenom", "Permis");
+        else if ($_GET["table"] == "utilisateurs") $enTete = array("Nom", "Username", "Supprimer");
+        else if ($_GET["table"] == "vehicules"   ) $enTete = array("Id", "Marque", "Modele", "Energie");
+        else if ($_GET["table"] == "chauffeurs"  ) $enTete = array("Id", "Nom", "Prenom", "Permis");
 
         $usr1 = array(
             "Nom" => "Mdaghri",
