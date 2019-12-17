@@ -13,6 +13,8 @@
 
 {% block dessous %}
 
+    {{ form_start(reservationForm) }}
+
     <div class="container">
 
         <div class="card">
@@ -93,9 +95,7 @@
                             </div>
                         </div>
                         <div class="action mx-auto">
-                            <form method="get" action="panier">
-                                <button class="add-to-cart btn btn-default" type="submit">Ajouter au panier</button>
-                            </form>
+                            <button class="add-to-cart btn btn-default" type="submit">Ajouter au panier</button>
                         </div>
                     </div>
                 </div>

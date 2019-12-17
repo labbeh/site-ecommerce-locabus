@@ -39,11 +39,10 @@ class Reservation
     private $dateFin;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Panier", inversedBy="reservations")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $panier;
-
+    private $state;
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -97,14 +96,14 @@ class Reservation
         return $this;
     }
 
-    public function getPanier(): ?Panier
+    public function getState(): ?string
     {
-        return $this->panier;
+        return $this->state;
     }
 
-    public function setPanier(?Panier $panier): self
+    public function setState(string $state): self
     {
-        $this->panier = $panier;
+        $this->state = $state;
 
         return $this;
     }
