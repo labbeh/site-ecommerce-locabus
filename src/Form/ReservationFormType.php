@@ -18,8 +18,6 @@ class ReservationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('user')
-            ->add('vehicule')
             ->add('dateDebut', DateType::class, [
                 'widget' => 'single_text',
 
