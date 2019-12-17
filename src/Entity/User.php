@@ -62,9 +62,7 @@ class User implements UserInterface
      */
     private $reservations;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Panier", mappedBy="user", cascade={"persist", "remove"})
-     */
+
     //private $panier;
 
     public function __construct()
