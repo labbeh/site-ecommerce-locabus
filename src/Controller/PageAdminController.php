@@ -20,8 +20,9 @@ class PageAdminController extends AbstractController
             ]);
 
         $datas = array(); // données en sortie vers la template
-        $enTete = array();
-        $type = "";
+        $enTete = array(); // nom des colonnes
+        $type = ""; // sert à envoyer à la vue le nom de l'entité en question pour la suppression
+        $i = 0; // pour ajouter les éléments dans le tableau envoyé à twig
 
         // si il n'y a pas de paramètre get on affiche aucun tableau
         if(sizeof($_GET) == 0) {
@@ -35,7 +36,6 @@ class PageAdminController extends AbstractController
             $users = $this->getDoctrine()->getRepository('App:User')->findAll();
             $type = "App:User";
 
-            $i = 0;
             foreach ($users as $u){
                 // les roles étants sous forme de tableau on construit une chaine
                 // permettant l'affichage de tous les roles dans la vue
@@ -61,8 +61,38 @@ class PageAdminController extends AbstractController
 
         else if ($_GET["table"] == "vehicules"   ) {
             $enTete = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\Vehicule')->getColumnNames();
+            $enTete[sizeof($enTete)] = "modèle";
+
             $vehicules = $this->getDoctrine()->getRepository('App:Vehicule')->findAll();
             $type = "App:Vehicule";
+
+            // id 	modele_id 	ptac 	nb_places 	energie 	annee 	norme 	critair 	description
+            foreach ($vehicules as $v){
+                $vehicule = array(
+                    "id" => $v->getId(),
+                    "ptac" => $v->getPtac(),
+                    "nb_places" => $v->getNbPlaces(),
+                    "energie" => $v->getEnergie(),
+                    "annee" => $v->getAnnee(),
+                    "norme" => $v-> getNorme(),
+                    "critair" => $v -> getCritair(),
+                    "description" => $v-> getDescription(),
+                    "modele" => $v->getModele()
+                );
+                $datas[$i] = $vehicule;
+                $i++;
+            }
+
+
+           /* $qb = $this
+                ->createQueryBuilder('a')
+                ->innerJoin('a.activiteEnseignements', 'acti')
+                ->addSelect('acti')
+                ->where('acti.degre = 1')
+                ->andWhere('acti.forme = :frm')
+                ->setParameter('frm', $idForme)
+                ->andWhere('a.groupe = :gr')
+                ->setParameter('gr', $idGroupe);*/
         }
 
         else if ($_GET["table"] == "chauffeurs"  ){
