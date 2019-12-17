@@ -21,47 +21,50 @@ class PageAdminController extends AbstractController
 
         $datas = array(); // données en sortie vers la template
 
+        // si il n'y a pas de paramètre get on affiche aucun tableau
         if(sizeof($_GET) == 0) {
-            $enTete = array();
-            $datas  = array();
+            $enTete = array(); // contient le nom des colonnes
+            $datas  = array(); // contient les données des tuples à envoyer au template
         }
 
-        //if(sizeof($_GET) == 0) $datas = array();
+        // affichage des utilisateurs
         else if ($_GET["table"] == "utilisateurs"){
             $enTete = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\User')->getColumnNames();
-            $all = $this->getDoctrine()->getRepository('App:User')->findAll();
+            $users = $this->getDoctrine()->getRepository('App:User')->findAll();
 
-            //$user = array();
             $i = 0;
+            foreach ($users as $u){
+                // les roles étants sous forme de tableau on construit une chaine
+                // permettant l'affichage de tous les roles dans la vue
+                $roles = "";
+                foreach($u -> getRoles() as $r){
+                    $roles = $roles . $r . " ";
+                }
 
-            $values = array();
-            /*foreach($enTete as $col){
-                $getter = 'get'.ucfirst($col);
-                $values[$col] = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\User')->$getter();
-            }*/
-
-            foreach ($all as $user){
-                $toarray = array(
-                  "id" => $user->getId(),
-                  "name" => $user->getUsername()
+                $user = array(
+                    "id"           => $u->getId(),
+                    "display_name" => $u->getDisplayName(),
+                    "roles"        => $roles,
+                    "password"     => "CRYPTE", // inutile d'afficher le mot de passe crypté
+                    "email"        => $u -> getEmail(),
+                    "last_name"    => $u -> getLastName(),
+                    "first_name"   => $u -> getFirstName(),
+                    "phone"        => $u -> getPhone()
                 );
-                $datas[$i++] = $toarray;
+                $datas[$i] = $user;
+                $i++;
             }
-//  	id 	display_name 	roles 	password 	email 	last_name 	first_name 	phone
-
         }
 
         else if ($_GET["table"] == "vehicules"   ) {
             $enTete = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\Vehicule')->getColumnNames();
-            $all = $this->getDoctrine()->getRepository('App:Vehicule')->findAll();
+            $vehicules = $this->getDoctrine()->getRepository('App:Vehicule')->findAll();
         }
 
         else if ($_GET["table"] == "chauffeurs"  ){
             $enTete = array("nom", "permis");
-            $all  = array();
+            $chauffeurs  = array();
         }
-        //$datas = array();
-
 
         return $this->render('admin.html.twig', [
             'controller_name' => 'PageAdmin',
