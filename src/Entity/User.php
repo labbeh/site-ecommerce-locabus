@@ -65,7 +65,7 @@ class User implements UserInterface
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Panier", mappedBy="user", cascade={"persist", "remove"})
      */
-    private $panier;
+    //private $panier;
 
     public function __construct()
     {
@@ -229,7 +229,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPanier(): ?Panier
+    /*public function getPanier(): ?Panier
     {
         return $this->panier;
     }
@@ -244,7 +244,7 @@ class User implements UserInterface
         }
 
         return $this;
-    }
+    }*/
 
     public function __toString(): string
     {
