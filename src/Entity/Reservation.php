@@ -38,6 +38,12 @@ class Reservation
      */
     private $dateFin;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Panier", inversedBy="reservations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $panier;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +93,18 @@ class Reservation
     public function setDateFin(\DateTimeInterface $dateFin): self
     {
         $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(?Panier $panier): self
+    {
+        $this->panier = $panier;
 
         return $this;
     }

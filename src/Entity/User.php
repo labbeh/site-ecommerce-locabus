@@ -62,6 +62,11 @@ class User implements UserInterface
      */
     private $reservations;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Panier", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $panier;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
@@ -219,6 +224,23 @@ class User implements UserInterface
             if ($reservation->getUser() === $this) {
                 $reservation->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(Panier $panier): self
+    {
+        $this->panier = $panier;
+
+        // set the owning side of the relation if necessary
+        if ($panier->getUser() !== $this) {
+            $panier->setUser($this);
         }
 
         return $this;
