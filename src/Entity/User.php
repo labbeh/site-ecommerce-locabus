@@ -79,7 +79,7 @@ class User implements UserInterface
 
     public function getDisplayName(): ?string
     {
-        return $this->firstName . " " . $this.$this->lastName;
+        return $this->firstName . " " .$this->lastName;
     }
 
     public function setDisplayName(): self
