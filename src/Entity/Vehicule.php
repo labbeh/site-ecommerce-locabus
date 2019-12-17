@@ -64,6 +64,16 @@ class Vehicule
      */
     private $reservations;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $photoPath;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
@@ -204,5 +214,29 @@ class Vehicule
     public function __toString(): string
     {
         return $this->modele;
+    }
+
+    public function getPhotoPath(): ?string
+    {
+        return $this->photoPath;
+    }
+
+    public function setPhotoPath(string $photoPath): self
+    {
+        $this->photoPath = $photoPath;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
     }
 }
