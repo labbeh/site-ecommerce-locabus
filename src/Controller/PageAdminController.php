@@ -20,6 +20,8 @@ class PageAdminController extends AbstractController
             ]);
 
         $datas = array(); // données en sortie vers la template
+        $enTete = array();
+        $type = "";
 
         // si il n'y a pas de paramètre get on affiche aucun tableau
         if(sizeof($_GET) == 0) {
@@ -31,6 +33,7 @@ class PageAdminController extends AbstractController
         else if ($_GET["table"] == "utilisateurs"){
             $enTete = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\User')->getColumnNames();
             $users = $this->getDoctrine()->getRepository('App:User')->findAll();
+            $type = "App:User";
 
             $i = 0;
             foreach ($users as $u){
@@ -59,6 +62,7 @@ class PageAdminController extends AbstractController
         else if ($_GET["table"] == "vehicules"   ) {
             $enTete = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\Vehicule')->getColumnNames();
             $vehicules = $this->getDoctrine()->getRepository('App:Vehicule')->findAll();
+            $type = "App:Vehicule";
         }
 
         else if ($_GET["table"] == "chauffeurs"  ){
@@ -69,7 +73,8 @@ class PageAdminController extends AbstractController
         return $this->render('admin.html.twig', [
             'controller_name' => 'PageAdmin',
             'entete' => $enTete,
-            'datas' => $datas
+            'datas' => $datas,
+            'type' => $type
         ]);
     }
 }
