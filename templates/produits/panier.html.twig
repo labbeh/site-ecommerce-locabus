@@ -18,13 +18,14 @@
             <thead>
             <tr>
                 <th style="width:50%">Produit</th>
-                <th style="width:10%">Prix</th>
+                <th style="width:15%">Nombre de places</th>
                 <th style="width:10%">Date</th>
                 <th style="width:22%" class="text-center">Sous-total</th>
                 <th style="width:10%"></th>
             </tr>
             </thead>
             <tbody>
+            {% set sum = 0 %}
             {% for pdt in listePdts %}
                 <tr>
 
@@ -32,22 +33,23 @@
                         <div class="row">
                             <div class="col-sm-2 hidden-xs align-self-center"><img src="./images/produits/{{ pdt.vehicule.photoPath }}" alt="..." class="img-responsive"/></div>
                             <div class="col-sm-10">
-                                <h4 class="nomargin">{{ pdt.vehicule.critair }} {{ pdt.vehicule.modele }} {{ pdt.vehicule.norme }}</h4>
+                                <h4 class="nomargin">{{ pdt.vehicule.modele.marque }} {{ pdt.vehicule.modele }} {{ pdt.vehicule.norme }}</h4>
                                 <p>{{ pdt.vehicule.description }}</p>
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price">{{ pdt.vehicule.price }}</td>
-                    <<td data-th="Quantity">
+                    <td data-th="Place">{{ pdt.vehicule.nbPlaces }}</td>
+                    <<td data-th="Date">
                         <p>Du {{ pdt.dateDebut|date("d/m/Y") }}</p>
                         <p>Au {{ pdt.dateFin|date("d/m/Y") }}</p>
                     </td>
-                    <td data-th="Subtotal" class="text-center">0</td>
+                    <td data-th="Subtotal" class="text-center">{{ pdt.vehicule.price }}€</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
                         <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
                     </td>
                 </tr>
+                {% set sum = sum + pdt.vehicule.price %}
             {% endfor %}
             </tbody>
             <tfoot>
@@ -57,7 +59,7 @@
             <tr>
                 <td><a href="produits" class="btn btn-warning"><i class="fa fa-angle-left"></i>Retourner à la navigation</a></td>
                 <td colspan="2" class="hidden-xs"></td>
-                <td class="hidden-xs text-center"><strong>Total 0€</strong></td>
+                <td class="hidden-xs text-center"><strong>Total {{ sum }}€</strong></td>
                 <td><a href="#" class="btn btn-success btn-block">Etape suivante<i class="fa fa-angle-right"></i></a></td>
             </tr>
             </tfoot>
