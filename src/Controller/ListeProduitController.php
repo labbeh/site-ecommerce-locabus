@@ -50,7 +50,7 @@ class ListeProduitController extends AbstractController
         $cars = $this->getDoctrine()->getRepository('App:Vehicule')->findAllUnbook(date("Y-m-d"));
         //$cpt = 1;
 
-        foreach ($cars as $car) {
+        /*foreach ($cars as $car) {
             $insert = array(
                 'marque' => $car->getModele()->getMarque()->getName(),
                 'modele' => $car->getModele(),
@@ -59,10 +59,10 @@ class ListeProduitController extends AbstractController
                 'description' => $car->getDescription()
             );
             $listePdts[$car->getId()] = $insert;
-        }
+        }*/
 
         return $this->render('produits/liste.html.twig', ['controller_name' => 'ListeProduitController',
-                                                                'listePdts' => $listePdts
+                                                                'listePdts' => $cars
         ]);
     }
 }

@@ -35,17 +35,9 @@ class FicheProduitController extends AbstractController
             $entityManager->flush();
         }
 
-        $dataVehicule = array(
-            'marque' => $vehicule->getModele()->getMarque()->getName(),
-            'modele' => $vehicule->getModele(),
-            'norme' => $vehicule->getNorme(),
-            'energie' => $vehicule->getEnergie(),
-            'description' => $vehicule->getDescription()
-        );
-
         // devra être récupérer via le liens
         return $this->render('produits/fiche.html.twig', ['controller_name' => 'FicheProduitController',
-            "GET" => $_GET, "vehicule" => $dataVehicule, 'reservationForm' => $form->createView()
+            "GET" => $_GET, "vehicule" => $vehicule, 'reservationForm' => $form->createView()
         ]);
     }
 }
