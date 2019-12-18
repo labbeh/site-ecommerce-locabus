@@ -20,6 +20,11 @@ class VehiculeController extends AbstractController
      */
     public function new(Request $request)
     {
+        if(!$this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            return $this->render('erreurdroits.html.twig', [
+                'controller_name' => 'PageAdmin'
+            ]);
+
         $vehicule = new Vehicule();
 
         $form = $this->createFormBuilder($vehicule)
@@ -31,6 +36,8 @@ class VehiculeController extends AbstractController
             ->add('critair', NumberType::class)
             ->add('description')
             ->add('modele')
+            ->add('photoPath')
+            ->add('price')
             ->add('Sauvegarder', SubmitType::class)
             ->getForm();
 
@@ -44,7 +51,7 @@ class VehiculeController extends AbstractController
             $entityManager->flush();
 
             return $this->render('accueil.html.twig', [
-                'controller_name' => 'AccueilController',
+                'controller_name' => 'VehiculeController',
             ]);
         }
 

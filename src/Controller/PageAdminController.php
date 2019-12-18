@@ -77,22 +77,13 @@ class PageAdminController extends AbstractController
                     "norme" => $v-> getNorme(),
                     "critair" => $v -> getCritair(),
                     "description" => $v-> getDescription(),
+                    "photoPath" => $v -> getPhotoPath(),
+                    "price" => $v -> getPrice(),
                     "modele" => $v->getModele()
                 );
                 $datas[$i] = $vehicule;
                 $i++;
             }
-
-
-           /* $qb = $this
-                ->createQueryBuilder('a')
-                ->innerJoin('a.activiteEnseignements', 'acti')
-                ->addSelect('acti')
-                ->where('acti.degre = 1')
-                ->andWhere('acti.forme = :frm')
-                ->setParameter('frm', $idForme)
-                ->andWhere('a.groupe = :gr')
-                ->setParameter('gr', $idGroupe);*/
         }
 
         else if ($_GET["table"] == "chauffeurs"  ){
