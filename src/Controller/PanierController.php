@@ -18,14 +18,11 @@ class PanierController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $listePdts = array();
         $user = $security->getUser();
-        foreach ($user->getReservations() as $res) {
-            array_push($listePdts ,$res->getVehicule());
-        }
         // ce tableau représente le contenu du panier
 
         return $this->render('produits/panier.html.twig', [
             'controller_name' => 'PanierController',
-            'listePdts' => $listePdts
+            'listePdts' => $user->getReservations()
         ]);
     }
 }
