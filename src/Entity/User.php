@@ -214,6 +214,10 @@ class User implements UserInterface
         return $this;
     }
 
+    public function nbCartElement(): int {
+        return $this->reservations->count();
+    }
+
     public function removeReservation(Reservation $reservation): self
     {
         if ($this->reservations->contains($reservation)) {
