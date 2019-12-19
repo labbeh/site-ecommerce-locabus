@@ -16,6 +16,7 @@
                 <input class="form-control form-control-dark w-75" type="text" placeholder="Search" aria-label="Search">
                 <ul class="navbar-nav px-3">
                     {% if app.user %}
+                        <a href="logout"><button class="btn btn-primary">Déconnexion</button></a>
                         <a href="panier"><button class="btn btn-warning m-2"><ion-icon name="cart"></ion-icon>{{ app.user.nbCartElement }}</button></a>
                     {% else %}
                         <li class="nav-item text-nowrap">
