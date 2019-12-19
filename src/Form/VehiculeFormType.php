@@ -13,7 +13,7 @@ class VehiculeFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        /*$builder
             ->add('ptac')
             ->add('nbPlaces')
             ->add('energie')
@@ -23,13 +23,13 @@ class VehiculeFormType extends AbstractType
             ->add('description')
             ->add('modele')
             ->add('save', SubmitType::class)
-        ;
+        ;*/
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        /*$resolver->setDefaults([
             'data_class' => Vehicule::class,
-        ]);
+        ]);*/
     }
 }
