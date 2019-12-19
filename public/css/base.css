@@ -4,3 +4,7 @@
     width: 100%;
     margin-bottom: 30px;
 }
+
+.inline li{
+    display: inline;
+}
