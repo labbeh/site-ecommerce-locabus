@@ -6,6 +6,12 @@
 {%  endblock %}
 
 {% block dessous %}
+    <!-- on créer un formulaire fictif afin de pouvoir rediriger vers un controller avec le code js-->
+    <form id="formsuppr" method="post" action="supprimer" style="display:none">
+        <input type="hidden" name="id" />
+        <input type="hidden" name="table" value={{ type }} />
+    </form>
+
     <div class="container-fluid h-100">
         <div class="row h-100">
             <aside class="col-12 col-md-2 p-0 bg-dark">
@@ -15,7 +21,6 @@
                             <!-- éléments du menu -->
                             <li class="nav-item"><a class="nav-link pl-0" href="adminpg?table=utilisateurs">Gestion des utilisateurs</a></li>
                             <li class="nav-item"><a class="nav-link pl-0" href="adminpg?table=vehicules">Gestion des véhicules</a></li>
-                            <li class="nav-item"><a class="nav-link pl-0" href="adminpg?table=chauffeurs">Gestion des chauffeurs</a></li>
                             <li class="nav-item"><a class="nav-link pl-0" href="vehicule">Insérer un nouveau véhicule</a></li>
 
                         </ul>
@@ -40,10 +45,7 @@
                                 <td>{{ data[key] }}</td>
                             {% endfor %}
                             <td>
-                                <form id="formsuppr" method="post" action="supprimer" style="display:none">
-                                    <input type="hidden" name="id" value={{ data.id }} />
-                                    <input type="hidden" name="table" value={{ type }} />
-                                </form>
+
                                 <button type="submit" id="{{ data.id }}" onclick="supprimer(this.id)"> - </button>
                             </td>
                         </tr>
