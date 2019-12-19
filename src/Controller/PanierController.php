@@ -15,6 +15,10 @@ class PanierController extends AbstractController
      */
     public function index(Security $security)
     {
+        if(is_null($security->getUser())){
+            return $this->redirectToRoute('accueil');
+        }
+
         $entityManager = $this->getDoctrine()->getManager();
         $listePdts = array();
         $user = $security->getUser();
