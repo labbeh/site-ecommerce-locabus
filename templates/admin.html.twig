@@ -60,6 +60,11 @@
 
 {% block javascripts %}
     <script>
+        // suppression de l'affichage du bandeau d'avertissement compte admin (puisqu'on est dans la zone admin)
+        $bandeau = document.getElementById('bandeau_admin').remove()
+
+
+        // fonction actionnée par le bouton de suppresion sur une des bases
         function supprimer($id) {
             if (confirm('Etes-vous sure de vouloir supprimer ce tuple ?')) {
                 $input = document.getElementsByName("id")[0]

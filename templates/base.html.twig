@@ -41,7 +41,7 @@
             <!-- Bandeau d'accès aux fonctions admin -->
             {% block blockadmin %}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <div class="alert alert-danger" role="alert">
+                    <div id="bandeau_admin" class="alert alert-danger" role="alert">
                         <p>Vous êtes connecté en tant qu'administrateur</p>
                         <a href="adminpg">Cliquez ici pour accéder aux fonctions d'administration</a>
                     </div>
