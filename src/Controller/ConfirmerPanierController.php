@@ -19,12 +19,8 @@ class ConfirmerPanierController extends AbstractController
             return $this->redirectToRoute('accueil');
         }
 
-        $entityManager = $this->getDoctrine()->getManager();
-        $listePdts = array();
         $user = $security->getUser();
 
-        //$reservations = $this->getDoctrine()->getRepository('App:Reservation');
-        $reservations = array();
         foreach ($user->getReservations() as $r){
             $this->getDoctrine()->getRepository('App:Reservation')->findOneByid($r->getId())->setState('Valid');
         }

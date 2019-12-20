@@ -41,8 +41,6 @@ class VehiculeController extends AbstractController
             ->add('Sauvegarder', SubmitType::class)
             ->getForm();
 
-
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
