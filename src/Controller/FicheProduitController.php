@@ -34,7 +34,7 @@ class FicheProduitController extends AbstractController
             $entityManager->persist($res);
             $entityManager->flush();
 
-            return $this->forward('App\Controller\ListeProduitController::index', []);
+            return $this->redirectToRoute("produits");
         }
 
         // devra être récupérer via le liens
