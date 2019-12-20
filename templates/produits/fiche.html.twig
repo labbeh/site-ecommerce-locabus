@@ -96,4 +96,27 @@
         </div>
     </div>
 
+    <script>
+        window.onload = init
+        function init() {
+
+            var today = new Date();
+            var tomorrow = new Date(today)
+            tomorrow.setDate(tomorrow.getDate() + 1)
+            var dd = tomorrow.getDate();
+            var mm = tomorrow.getMonth() + 1; //January is 0!
+            var yyyy = tomorrow.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+
+            tomorrow = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("reservation_form_dateDebut").setAttribute("min", tomorrow);
+            document.getElementById("reservation_form_dateFin").setAttribute("min", tomorrow);
+        }
+    </script>
+
 {% endblock %}
