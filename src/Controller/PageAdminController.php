@@ -26,8 +26,8 @@ class PageAdminController extends AbstractController
 
         // si il n'y a pas de paramètre get on affiche aucun tableau
         if(sizeof($_GET) == 0) {
-            $enTete = array(); // contient le nom des colonnes
-            $datas  = array(); // contient les données des tuples à envoyer au template
+            $enTete = array();
+            $datas  = array();
         }
 
         // affichage des utilisateurs
@@ -84,11 +84,6 @@ class PageAdminController extends AbstractController
                 $datas[$i] = $vehicule;
                 $i++;
             }
-        }
-
-        else if ($_GET["table"] == "chauffeurs"  ){
-            $enTete = array("nom", "permis");
-            $chauffeurs  = array();
         }
 
         return $this->render('admin.html.twig', [
