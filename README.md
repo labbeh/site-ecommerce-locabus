@@ -3,9 +3,10 @@ Utilisation du site en local:
 dans /public lancer php -S localhost:[port]
 
 Le projet repose sur Symfony. Pour créer les tables de la base de données du site,
-il suffit d'effectuer une migration des entités vers la base avec les commandes de dcotrine.
+il suffit d'effectuer une migration des entités vers la base avec les commandes de doctrine.
+Sinon, utiliser le script de création ci-dessous.
 
-Afin d'avoir des véhicules initialement dans la base, ci-dessous, quelques tuples à insérer.
+Afin d'avoir des véhicules initialement dans la base, nous avons également mis, quelques tuples à insérer.
 
 -- phpMyAdmin SQL Dump
 -- version 4.6.6deb5
@@ -75,7 +76,36 @@ INSERT INTO `modele` (`id`, `marque_id`, `name`) VALUES
 --
 -- Structure de la table `reservation`
 --
+CREATE TABLE IF NOT EXISTS `reservation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `vehicule_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date_debut` date NOT NULL,
+  `date_fin` date NOT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_42C849554A4A3511` (`vehicule_id`),
+  KEY `IDX_42C84955A76ED395` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `display_name` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `roles` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
+) 
 
 
 
