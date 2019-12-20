@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/panier.css">
+{% endblock %}
+
+{% block title %}C'est réservé !{% endblock %}
+
+{% block dessous %}
+
+    <div class="container">
+        <h1>Votre commande est confirmée !</h1>
+        <p>Nous vous contacterons prochainement au {{ user.phone }}</p>
+        <p>Veuillez vous présenter au dépôt le jours de la réervations avec :</p>
+        <ul>
+            <li>Carte d'identité</li>
+            <li>Permis D valide</li>
+            <li>Copie de la FIMO dans le cadre d'un transport hors du cadre personnel</li>
+        </ul>
+
+        <p>locaBus vous remercie pour votre confiance !</p>
+    </div>
+{% endblock %}

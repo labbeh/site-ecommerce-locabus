@@ -8,15 +8,9 @@
     <link rel="stylesheet" href="css/panier.css">
 {% endblock %}
 
-{% block title %}
-    Panier
-{% endblock %}
+{% block title %}Confirmation de la réservation{% endblock %}
 
 {% block dessous %}
-    <!-- on créer un formulaire fictif afin de pouvoir rediriger vers supprpanier avec "action" -->
-    <form id="formsuppr" method="post" action="supprpanier" style="display:none">
-        <input type="hidden" name="id" />
-    </form>
 
     <div class="container">
         <table id="cart" class="table table-hover table-condensed">
@@ -36,7 +30,7 @@
 
                     <td data-th="Product">
                         <div class="row">
-                            <div class="col-sm-2 hidden-xs align-self-center"><img src="./images/produits/{{ pdt.vehicule.photoPath }}" alt="photo du véhicule" class="img-responsive"/></div>
+                            <div class="col-sm-2 hidden-xs align-self-center"><img src="./images/produits/{{ pdt.vehicule.photoPath }}" alt="..." class="img-responsive"/></div>
                             <div class="col-sm-10">
                                 <h4 class="nomargin">{{ pdt.vehicule.modele.marque }} {{ pdt.vehicule.modele }} {{ pdt.vehicule.norme }}</h4>
                                 <p>{{ pdt.vehicule.description }}</p>
@@ -49,9 +43,6 @@
                         <p>Au {{ pdt.dateFin|date("d/m/Y") }}</p>
                     </td>
                     <td data-th="Subtotal" class="text-center">{{ pdt.vehicule.price }}€</td>
-                    <td class="actions" data-th="">
-                        <button class="btn btn-danger btn-sm" type="button" id="{{ pdt.id }}" onclick="supprimer(this.id)"><i class="fa fa-trash-o"></i></button>
-                    </td>
                 </tr>
                 {% set sum = sum + pdt.vehicule.price %}
             {% endfor %}
@@ -59,10 +50,10 @@
             <tfoot>
 
             <tr>
-                <td><a href="produits" class="btn btn-warning"><i class="fa fa-angle-left"></i>Retourner à la navigation</a></td>
+                <td><a href="panier" class="btn btn-warning"><i class="fa fa-angle-left"></i>Retourner au panier</a></td>
                 <td colspan="2" class="hidden-xs"></td>
                 <td class="hidden-xs text-center"><strong>Total {{ sum }}€</strong></td>
-                <td><a href="validPanier" class="btn btn-success btn-block">Etape suivante / Commandes en cours<i class="fa fa-angle-right"></i></a></td>
+                <td><a href="confirmer" class="btn btn-success btn-block">Confirmer<i class="fa fa-angle-right"></i></a></td>
             </tr>
             </tfoot>
         </table>
@@ -70,24 +61,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        function supprimer($id) {
-            // récupère le formulaire fictif et on met dans l'input l'id du bouton supprimer cliqué
-            $input = document.getElementsByName("id")[0]
-            $input.value = $id
 
-            document.getElementById('formsuppr').submit()
-            /*$form = document.createElement("form")
-            $form.method ="post"
-            $form.action = "supprpanier"
-
-            $input = document.createElement("input")
-            $input.type = "hidden"
-            $input.value = $id
-
-            $form.appendChild($input)
-            $form.submit();*/
-
-        }
-    </script>
 {% endblock %}

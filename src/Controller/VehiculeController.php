@@ -50,9 +50,6 @@ class VehiculeController extends AbstractController
             $entityManager->persist($vehicule);
             $entityManager->flush();
 
-            /*return $this->render('accueil.html.twig', [
-                'controller_name' => 'VehiculeController',
-            ]);*/
             return $this->redirectToRoute('adminpg');
         }
 

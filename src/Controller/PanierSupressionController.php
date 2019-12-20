@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
 
 class PanierSupressionController extends AbstractController
 {
@@ -28,14 +27,6 @@ class PanierSupressionController extends AbstractController
         $em->remove($entity);
         $em->flush();
 
-       // $response = $this->forward('App\Controller\PageAdminController::index', []);
-
-
         return $this->redirectToRoute('panier');
-
-        /*return $this->render('produits/panier.html.twig', [
-            'controller_name' => 'PanierController',
-            'listePdts' => $user->getReservations()
-        ]);*/
     }
 }

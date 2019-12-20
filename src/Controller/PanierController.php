@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Panier;
-use App\Entity\Vehicule;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
@@ -19,14 +18,19 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('accueil');
         }
 
-        $entityManager = $this->getDoctrine()->getManager();
-        $listePdts = array();
+        //$entityManager = $this->getDoctrine()->getManager();
         $user = $security->getUser();
-        // ce tableau représente le contenu du panier
+
+        $reservations = array();
+        $i =0;
+        foreach ($user->getReservations() as $r){
+            if($r->getState() == 'cart')
+                $reservations[$i++] = $r;
+        }
 
         return $this->render('produits/panier.html.twig', [
             'controller_name' => 'PanierController',
-            'listePdts' => $user->getReservations()
+            'listePdts' => $reservations
         ]);
     }
 }
