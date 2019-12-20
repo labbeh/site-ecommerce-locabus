@@ -12,11 +12,12 @@
     <body>
         {%  block header %}
             <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-                <a class="navbar-brand col-sm-1 col-xs-2 mr-0" href="accueil">locaBus</a>
-                <input class="form-control form-control-dark w-75" type="text" placeholder="Search" aria-label="Search">
+                <a class="navbar-brand col-sm-1 col-xs-2 mr-0" href="/">locaBus</a>
+                <div class="w-60"></div>
                 <ul class="navbar-nav px-3">
                     {% if app.user %}
                         <ul class="inline">
+                            <li><a href="userRes"><button class="btn btn-info">Mes réservations</button></a></li>
                             <li><a href="logout"><button class="btn btn-danger">Déconnexion</button></a></li>
                             <li><a href="panier"><button class="btn btn-warning m-2"><ion-icon name="cart"></ion-icon>{{ app.user.nbCartElement }}</button></a></li>
                         </ul>

@@ -2,5 +2,5 @@
 #    path:   /public
 #    controller: App\Controller\DefaultController::index
 app_homepage:
-  path: /accueil
+  path: /
   controller: App\Controller\AccueilController.php

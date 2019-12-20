@@ -42,6 +42,11 @@ class Reservation
      * @ORM\Column(type="string", length=255)
      */
     private $state;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price;
     
     public function getId(): ?int
     {
@@ -104,6 +109,18 @@ class Reservation
     public function setState(string $state): self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

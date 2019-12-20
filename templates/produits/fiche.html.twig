@@ -2,6 +2,14 @@
 {%  block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="css/fiche.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+    </script>
 {%  endblock %}
 
 {% block title %}
@@ -13,87 +21,110 @@
 
 {% block dessous %}
 
-    {{ form_start(reservationForm) }}
+    <form method="post">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="card">
-            <div class="container-fliud">
-                <div class="wrapper row">
-                    <div class="preview col-md-6">
-                        <a href="produits"> Retour à la sélection </a>
-                        <div class="preview-pic tab-content">
-                            <div class="tab-pane active" id="pic-1"><img src="./images/produits/{{ vehicule.photoPath }}" /></div>
+            <div class="card">
+                <div class="container-fliud">
+                    <div class="wrapper row">
+                        <div class="preview col-md-6">
+                            <a href="produits"> Retour à la sélection </a>
+                            <div class="preview-pic tab-content">
+                                <div class="tab-pane active" id="pic-1"><img src="./images/produits/{{ vehicule.photoPath }}" /></div>
+                            </div>
+                            <!-- Ici la liste des différentes photos du produit -->
+                            <ul class="preview-thumbnail nav nav-tabs">
+                                <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="./images/produits/{{ vehicule.photoPath }}" /></a></li>
+                            </ul>-
+
                         </div>
-                        <!-- Ici la liste des différentes photos du produit -->
-                        <ul class="preview-thumbnail nav nav-tabs">
-                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="./images/produits/{{ vehicule.photoPath }}" /></a></li>
-                        </ul>-
+                        <div class="details col-md-6">
+                            <h3 class="product-title">
+                                {{ vehicule.modele.marque }}
+                                {{ vehicule.modele }}
+                                {{ vehicule.norme }}
+                                </h3>
+                            <div class="rating">
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                            </div>
 
-                    </div>
-                    <div class="details col-md-6">
-                        <h3 class="product-title">
-                            {{ vehicule.modele.marque }}
-                            {{ vehicule.modele }}
-                            {{ vehicule.norme }}
-                            </h3>
-                        <div class="rating">
-                            <div class="stars">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
+                            <p class="product-description">
+                                {{ vehicule.description }}
+                            </p>
+                            <h4 class="price">Prix à la journée <span>{{ vehicule.price }}€</span></h4>
+                            <h5 class="specifications">Fiche technique:
+                                <ul>
+                                    <li>Marque: {{ vehicule.modele.marque }}</li>
+                                    <li>Modèle: {{vehicule.modele }}</li>
+                                    <li>Norme anti-pollution: {{ vehicule.norme }}</li>
+                                    <li>Type d'énergie: {{ vehicule.energie }}</li>
+                                    <li>Nombre de places: {{ vehicule.nbPlaces }}</li>
+                                    <li>
+                                        <img class="rounded-circle" src="./images/vignettes/{{ vehicule.critair }}.png"
+                                             alt="logo vignette crit'air {{ vehicule.critair }}" width="80" height="80">
+                                    </li>
+                                </ul>
+                            </h5>
 
-                        <p class="product-description">
-                            {{ vehicule.description }}
-                        </p>
-                        <h4 class="price">Prix à la journée <span>{{ vehicule.price }}€</span></h4>
-                        <h5 class="specifications">Fiche technique:
-                            <ul>
-                                <li>Marque: {{ vehicule.modele.marque }}</li>
-                                <li>Modèle: {{vehicule.modele }}</li>
-                                <li>Norme anti-pollution: {{ vehicule.norme }}</li>
-                                <li>Type d'énergie: {{ vehicule.energie }}</li>
-                                <li>Nombre de places: {{ vehicule.nbPlaces }}</li>
-                                <li>
-                                    <img class="rounded-circle" src="./images/vignettes/{{ vehicule.critair }}.png"
-                                         alt="logo vignette crit'air {{ vehicule.critair }}" width="80" height="80">
-                                </li>
-                            </ul>
-                        </h5>
-
-                        <h5>
-                        </h5>
-                        <div class="row border border-warning">
-                            <div class="col-md">
-                                {{ form_label(reservationForm.dateDebut) }}
+                            <h5 class="text-danger">
+                                {{ error }}
+                            </h5>
+                            <div class="row border border-warning">
+                                <div class="col-md">
+                                    Date début :
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="dateDebut" id="datepicker"></p>
+                                </div>
                             </div>
-                            <div class="col">
-                                {{ form_widget(reservationForm.dateDebut) }}
+                            <div class="row border border-warning mt-2 mb-2">
+                                <div class="col-md">
+                                    Date fin :
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="dateFin" id="datepicker2"></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row border border-warning mt-2 mb-2">
-                            <div class="col-md">
-                                {{ form_label(reservationForm.dateFin) }}
+                            <div class="action mx-auto">
+                                {% if app.user %}
+                                    <button class="add-to-cart btn btn-default" type="submit">Ajouter au panier</button>
+                                {% else %}
+                                    <a href="login"> <div class="add-to-cart btn btn-default">Ajouter au panier</div> </a>
+                                {% endif %}
                             </div>
-                            <div class="col">
-                                {{ form_widget(reservationForm.dateFin) }}
-                            </div>
-                        </div>
-                        <div class="action mx-auto">
-                            {% if app.user %}
-                                <a href="login"> <button class="add-to-cart btn btn-default" type="submit">Ajouter au panier</button> </a>
-                            {% else %}
-                                <button class="add-to-cart btn btn-default" type="submit">Ajouter au panier</button>
-                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+
+    <script>
+
+        var array = {{ dateRes|json_encode|raw }};
+
+        $('#datepicker').datepicker({
+            minDate: 1,
+            beforeShowDay: function(date){
+                var string = jQuery.datepicker.formatDate('y-mm-dd', date);
+                return [ array.indexOf(string) == -1 ]
+            }
+        });
+
+        $('#datepicker2').datepicker({
+            minDate: 1,
+            beforeShowDay: function(date){
+                var string = jQuery.datepicker.formatDate('y-mm-dd', date);
+                return [ array.indexOf(string) == -1 ]
+            }
+        });
+    </script>
 
 {% endblock %}

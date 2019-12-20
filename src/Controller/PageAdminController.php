@@ -99,6 +99,7 @@ class PageAdminController extends AbstractController
                   "date_debut" => $r->getDateDebut()->format('Y-m-d H:i:s.u'),
                    "date_fin" => $r ->getDateFin()->format('Y-m-d H:i:s.u'),
                    "state" => $r->getState(),
+                   "price" => $r->getPrice(),
                    "utilisateur" => $r->getUser()
                 );
                 $datas[$i] = $resa;

@@ -42,9 +42,9 @@
                         <p>Du {{ pdt.dateDebut|date("d/m/Y") }}</p>
                         <p>Au {{ pdt.dateFin|date("d/m/Y") }}</p>
                     </td>
-                    <td data-th="Subtotal" class="text-center">{{ pdt.vehicule.price }}€</td>
+                    <td data-th="Subtotal" class="text-center">{{ pdt.price }}€</td>
                 </tr>
-                {% set sum = sum + pdt.vehicule.price %}
+                {% set sum = sum + pdt.price %}
             {% endfor %}
             </tbody>
             <tfoot>
