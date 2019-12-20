@@ -24,7 +24,7 @@ class ValidPanierController extends AbstractController
         // contenu du panier avant validation
         return $this->render('produits/validPanier.html.twig', [
             'controller_name' => 'PanierController',
-            'listePdts' => $user->getReservations()
+            'listePdts' => $this->getDoctrine()->getRepository('App:Reservation')->findBy(array('state'=>'cart'))
         ]);
     }
 }
