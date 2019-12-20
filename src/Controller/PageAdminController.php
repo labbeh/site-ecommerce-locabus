@@ -86,6 +86,26 @@ class PageAdminController extends AbstractController
             }
         }
 
+        else if($_GET["table"] == "resa"){
+            $enTete = $this->getDoctrine()->getManager()->getClassMetadata('App\Entity\Reservation')->getColumnNames();
+            $enTete[sizeof($enTete)] = "utilisateur";
+
+            $resas = $this->getDoctrine()->getRepository('App:Reservation')->findAll();
+            $type = "App:Reservation";
+
+            foreach ($resas as $r){
+                $resa = array(
+                  "id" => $r->getId(),
+                  "date_debut" => $r->getDateDebut()->format('Y-m-d H:i:s.u'),
+                   "date_fin" => $r ->getDateFin()->format('Y-m-d H:i:s.u'),
+                   "state" => $r->getState(),
+                   "utilisateur" => $r->getUser()
+                );
+                $datas[$i] = $resa;
+                $i++;
+            }
+        }
+
         return $this->render('admin.html.twig', [
             'controller_name' => 'PageAdmin',
             'entete' => $enTete,
