@@ -48,12 +48,12 @@
                         <p>Du {{ pdt.dateDebut|date("d/m/Y") }}</p>
                         <p>Au {{ pdt.dateFin|date("d/m/Y") }}</p>
                     </td>
-                    <td data-th="Subtotal" class="text-center">{{ pdt.vehicule.price }}€</td>
+                    <td data-th="Subtotal" class="text-center">{{ pdt.price }}€</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-danger btn-sm" type="button" id="{{ pdt.id }}" onclick="supprimer(this.id)"><i class="fa fa-trash-o"></i></button>
                     </td>
                 </tr>
-                {% set sum = sum + pdt.vehicule.price %}
+                {% set sum = sum + pdt.price %}
             {% endfor %}
             </tbody>
             <tfoot>
