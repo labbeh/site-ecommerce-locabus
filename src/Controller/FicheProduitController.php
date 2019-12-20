@@ -53,7 +53,7 @@ class FicheProduitController extends AbstractController
             $res->setUser($security->getUser());
             $res->setVehicule($vehicule);
             $res->setState("cart");
-            $res->setPrice(date_diff($dateDebut, $dateFin)->days * $vehicule->getPrice());
+            $res->setPrice(date_diff($dateDebut, $dateFin->add(new DateInterval('P1D')))->days * $vehicule->getPrice());
             $res->setDateDebut($dateDebut);
             $res->setDateFin($dateFin);
             $entityManager = $this->getDoctrine()->getManager();
