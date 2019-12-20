@@ -62,7 +62,9 @@
                 <td><a href="produits" class="btn btn-warning"><i class="fa fa-angle-left"></i>Retourner à la navigation</a></td>
                 <td colspan="2" class="hidden-xs"></td>
                 <td class="hidden-xs text-center"><strong>Total {{ sum }}€</strong></td>
-                <td><a href="validPanier" class="btn btn-success btn-block">Etape suivante / Commandes en cours<i class="fa fa-angle-right"></i></a></td>
+                {% if app.user.nbCartElement > 0 %}
+                    <td><a href="validPanier" class="btn btn-success btn-block">Etape suivante / Commandes en cours<i class="fa fa-angle-right"></i></a></td>
+                {% endif %}
             </tr>
             </tfoot>
         </table>
