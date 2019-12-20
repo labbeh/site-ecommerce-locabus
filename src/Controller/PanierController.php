@@ -18,7 +18,6 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('accueil');
         }
 
-        //$entityManager = $this->getDoctrine()->getManager();
         $user = $security->getUser();
 
         $reservations = array();

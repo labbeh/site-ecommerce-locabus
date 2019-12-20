@@ -19,8 +19,6 @@ class ValidPanierController extends AbstractController
             return $this->redirectToRoute('accueil');
         }
 
-        $entityManager = $this->getDoctrine()->getManager();
-        $listePdts = array();
         $user = $security->getUser();
 
         // contenu du panier avant validation
