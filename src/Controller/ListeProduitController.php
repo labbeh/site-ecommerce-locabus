@@ -49,20 +49,24 @@ class ListeProduitController extends AbstractController
 
         $cars = $this->getDoctrine()->getRepository('App:Vehicule')->findAllUnbook(date("Y-m-d"));
         //$cpt = 1;
+        $marques = array();
+        $energys = array();
+        $normes = array();
 
-        /*foreach ($cars as $car) {
-            $insert = array(
-                'marque' => $car->getModele()->getMarque()->getName(),
-                'modele' => $car->getModele(),
-                'norme' => $car->getNorme(),
-                'energie' => $car->getEnergie(),
-                'description' => $car->getDescription()
-            );
-            $listePdts[$car->getId()] = $insert;
-        }*/
+        foreach ($cars as $car) {
+           if (!in_array($car->getModele()->getMarque(), $marques)) {
+               array_push($marques, $car->getModele()->getMarque());
+           }
+           if (!in_array($car->getEnergie(), $energys)) {
+               array_push($energys, $car->getEnergie());
+           }
+           if (!in_array($car->getNorme(), $normes)) {
+               array_push($normes, $car->getNorme());
+           }
+        }
 
         return $this->render('produits/liste.html.twig', ['controller_name' => 'ListeProduitController',
-                                                                'listePdts' => $cars
+                                                                'listePdts' => $cars, 'marques' => $marques, 'energys' => $energys, 'normes' => $normes
         ]);
     }
 }
