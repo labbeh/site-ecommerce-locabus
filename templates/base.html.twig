@@ -17,6 +17,7 @@
                 <ul class="navbar-nav px-3">
                     {% if app.user %}
                         <ul class="inline">
+                            <li><a href="userRes"><button class="btn btn-info">Mes réservations</button></a></li>
                             <li><a href="logout"><button class="btn btn-danger">Déconnexion</button></a></li>
                             <li><a href="panier"><button class="btn btn-warning m-2"><ion-icon name="cart"></ion-icon>{{ app.user.nbCartElement }}</button></a></li>
                         </ul>

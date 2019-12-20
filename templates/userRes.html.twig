@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block title %}Page administration{% endblock %}
+
+{%  block stylesheets %}
+
+{%  endblock %}
+
+{% block dessous %}
+    <!-- on créer un formulaire fictif afin de pouvoir rediriger vers un controller avec le code js-->
+    <form id="formsuppr" method="post" action="supprimer" style="display:none">
+        <input type="hidden" name="id" />
+        <input type="hidden" name="table" value={{ type }} />
+    </form>
+
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <main class="col">
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        {% for nomCol in entete %}
+                            <th scope="col"> {{ nomCol }} </th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for data in datas %}
+                        <tr>
+
+                            {% for key in data|keys %}
+                                <td>{{ data[key] }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+{%  endblock %}
+
+{% block javascripts %}
+    <script>
+        // suppression de l'affichage du bandeau d'avertissement compte admin (puisqu'on est dans la zone admin)
+        $bandeau = document.getElementById('bandeau_admin').remove()
+
+
+        // fonction actionnée par le bouton de suppresion sur une des bases
+        function supprimer($id) {
+            if (confirm('Etes-vous sure de vouloir supprimer ce tuple ?')) {
+                $input = document.getElementsByName("id")[0]
+                $input.value = $id
+
+                document.getElementById('formsuppr').submit()
+            }
+        }
+    </script>
+{% endblock %}
