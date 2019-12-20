@@ -25,7 +25,7 @@ class FicheProduitController extends AbstractController
 
         $vehicule = $this -> getDoctrine() -> getRepository('App:Vehicule') -> findOneByid($_GET["car"]);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && !is_null($security->getUser())) {
             // encode the plain password
             $res->setUser($security->getUser());
             $res->setVehicule($vehicule);
@@ -33,6 +33,8 @@ class FicheProduitController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($res);
             $entityManager->flush();
+
+            return $this->forward('App\Controller\ListeProduitController::index', []);
         }
 
         // devra être récupérer via le liens
