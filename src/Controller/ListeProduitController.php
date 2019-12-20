@@ -52,6 +52,7 @@ class ListeProduitController extends AbstractController
         $marques = array();
         $energys = array();
         $normes = array();
+        $critairs = array();
 
         foreach ($cars as $car) {
            if (!in_array($car->getModele()->getMarque(), $marques)) {
@@ -63,10 +64,13 @@ class ListeProduitController extends AbstractController
            if (!in_array($car->getNorme(), $normes)) {
                array_push($normes, $car->getNorme());
            }
+           if (!in_array($car->getCritair(), $critairs)) {
+               array_push($critairs, $car->getCritair());
+           }
         }
 
         return $this->render('produits/liste.html.twig', ['controller_name' => 'ListeProduitController',
-                                                                'listePdts' => $cars, 'marques' => $marques, 'energys' => $energys, 'normes' => $normes
+                                                                'listePdts' => $cars, 'marques' => $marques, 'energys' => $energys, 'normes' => $normes, 'critairs' => $critairs
         ]);
     }
 }
