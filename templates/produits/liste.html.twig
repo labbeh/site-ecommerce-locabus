@@ -28,11 +28,15 @@
                                     {{ pdt.modele.marque }} {{ pdt.modele }} {{ pdt.norme }}
                                 </h5>
 
+                                <p class="font-bold form-control-dark mb-0">
+                                    {{ pdt.energie }}
+                                </p>
+
                                 <p class="font-italic text-muted mb-0 small">
                                     {{ pdt.description }}
                                 </p>
                                 <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-weight-bold my-2">{{ pdt.price }} €/jours</h6>
+                                    <h6 class="font-weight-bold my-2">{{ pdt.price }}€ / jour</h6>
                                 </div>
                             </div><img src="./images/produits/{{ pdt.photoPath }}" alt="Photo du véhicule" width="200" class="ml-lg-5 order-1 order-lg-2">
                         </div>
@@ -44,69 +48,59 @@
                 <!-- End -->
             </div>
             <div class="cd-filter-block">
-                <h4>Categorie</h4>
+                <h4>Marque</h4>
                 <ul class="cd-filter-content cd-filters list">
-                    <li>
-                        <input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
-                        <label class="checkbox-label" for="checkbox1">Urbain</label>
-                    </li>
-
-                    <li>
-                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
-                        <label class="checkbox-label" for="checkbox2">Interurbain</label>
-                    </li>
-
-                    <li>
-                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
-                        <label class="checkbox-label" for="checkbox2">Tourisme</label>
-                    </li>
-
+                    {% for marque in marques %}
+                        <li>
+                            <input class="filter" data-filter=".check1" type="checkbox" id={{ marque }} checked >
+                            <label class="checkbox-label" for="checkbox1">{{ marque }}</label>
+                        </li>
+                    {% endfor %}
                 </ul> <!-- cd-filter-content -->
 
                 <h4>Energie</h4>
                 <ul class="cd-filter-content cd-filters list">
-                    <li>
-                        <input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
-                        <label class="checkbox-label" for="checkbox1">Diesel</label>
-                    </li>
-
-                    <li>
-                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
-                        <label class="checkbox-label" for="checkbox2">GNV</label>
-                    </li>
-
-                    <li>
-                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
-                        <label class="checkbox-label" for="checkbox2">Hybride</label>
-                    </li>
-
-                    <li>
-                        <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
-                        <label class="checkbox-label" for="checkbox2">Electrique</label>
-                    </li>
-
+                    {% for energy in energys %}
+                        <li>
+                            <input class="filter" data-filter=".check1" type="checkbox" id={{ energy }} checked>
+                            <label class="checkbox-label" for="checkbox1">{{ energy }}</label>
+                        </li>
+                    {% endfor %}
                 </ul> <!-- cd-filter-content -->
 
-                <h4>Nombre de places</h4>
+                <h4>Norme</h4>
                 <ul class="cd-filter-content cd-filters list">
-                    <li>
-                        <input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
-                        <label class="radio-label" for="radio1">9 Places max</label>
-                    </li>
-
-                    <li>
-                        <input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
-                        <label class="radio-label" for="radio1">de 10 à 20 places</label>
-                    </li>
-
-                    <li>
-                        <input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
-                        <label class="radio-label" for="radio1">Plus de 20 places</label>
-                    </li>
-
+                    {% for norme in normes %}
+                        <li>
+                            <input class="filter" data-filter=".check1" type="checkbox" name="radioButton" id={{ norme }} checked>
+                            <label class="radio-label" for="checkbox1">{{ norme }}</label>
+                        </li>
+                    {% endfor %}
                 </ul> <!-- cd-filter-content -->
 
             </div> <!-- cd-filter-block -->
         </div>
     </div>
+
+    <script>
+        checkboxs = document.getElementsByClassName("filter")
+        divs = document.getElementsByClassName("list-group-item")
+        for (var i = 0; i < checkboxs.length; i++) {
+            checkboxs[i].addEventListener('click', function() {
+                if (this.checked) {
+                    for (var j = 0; j < divs.length; j++) {
+                        if (divs[j].innerHTML.includes(this.getAttribute("id"))) {
+                            divs[j].style.display = "block"
+                        }
+                    }
+                } else {
+                    for (var j = 0; j < divs.length; j++) {
+                        if (divs[j].innerHTML.includes(this.getAttribute("id"))) {
+                            divs[j].style.display = "none"
+                        }
+                    }
+                }
+            });
+        }
+    </script>
 {% endblock %}
