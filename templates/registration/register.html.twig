@@ -17,6 +17,7 @@
             {'class': 'form-signin'}
         })
     }}
+    <input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}"/>
         {{ form_label(registrationForm.email,
             null,
             { 'label_attr':
